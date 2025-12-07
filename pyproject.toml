@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "slint-python-template"
+version = "0.1.0"
+description = "Desktop app template"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "slint>=1.9.0a1,<1.10.0a1",
+]
+
+[project.scripts]
+app = "src.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.3",
+    "nox>=2025.2.9",
+]
+
+[tool.ruff]
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "I", "Q", "SIM", "C90", "TID", "PLC", "PIE"]
+extend-select = ["B9"]
+ignore = ["E203"]

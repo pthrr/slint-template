@@ -1,0 +1,30 @@
+import { Button, HorizontalBox, Palette } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    title: "App";
+
+    in-out property <int> counter: 0;
+    callback increment-clicked();
+    callback reset-clicked();
+
+    HorizontalBox {
+        Text {
+            text: counter;
+            font-size: 24px;
+            font-weight: 700;
+            color: Palette.accent-background;
+            vertical-alignment: center;
+        }
+
+        Button {
+            text: "+";
+            primary: true;
+            clicked => { root.increment-clicked(); }
+        }
+
+        Button {
+            text: "Reset";
+            clicked => { root.reset-clicked(); }
+        }
+    }
+}
